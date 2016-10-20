@@ -1,0 +1,89 @@
+<div class="row" ng-controller="ContactsCtrl">
+<div class="col-md-5" ng-show="addFormShow">
+  <h3>Add contact</h3>
+  <form class="" ng-submit="addContact()">
+    <div class="form-group row">
+      <label for="example-text-input" class="col-xs-2 col-form-label">Username</label>
+      <div class="col-xs-7">
+        <input class="form-control" type="text" value="Artisanal kale" ng-model="name">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
+      <div class="col-xs-7">
+        <input class="form-control" type="email" value="bootstrap@example.com" ng-model="email">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
+      <div class="col-xs-7">
+        <input class="form-control" type="password" value="hunter2" ng-model="password">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+
+  </form>
+</div>
+<div class="col-md-5" ng-show="editFormShow">
+  <h3>Edit contact</h3>
+  <form class="" ng-submit="editContact()">
+    <div class="form-group row">
+      <label for="example-text-input" class="col-xs-2 col-form-label">Username</label>
+      <div class="col-xs-7">
+        <input class="form-control" type="text" value="Artisanal kale" ng-model="name">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
+      <div class="col-xs-7">
+        <input class="form-control" type="email" value="bootstrap@example.com" ng-model="email">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
+      <div class="col-xs-7">
+        <input class="form-control" type="password" value="hunter2" ng-model="password">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+
+  </form>
+</div>
+<div class="col-md-7">
+  <h3>Contacts</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="contact in contacts">
+          <td>
+            {{contact.name}}
+          </td>
+          <td>
+            {{contact.email}}
+          </td>
+          <td>
+            <button class="btn btn-default" ng-click="showEditForm(contact)">Edit</button>
+            <button class="btn btn-danger" ng-click="removeContact(contact)">Delete</button>
+          </td>
+        </tr>
+
+      </tbody>
+
+  </table>
+</div>
+</div>
