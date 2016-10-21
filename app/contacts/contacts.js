@@ -1,17 +1,28 @@
 'use strict';
 
-angular.module('myApp.contacts', ['ngRoute'])
+angular.module('myApp.contacts', ['ngRoute', 'ui.router'])
 
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider','$stateProvider', function($routeProvider, $stateProvider) {
     $routeProvider.when('/contacts', {
         templateUrl: 'contacts/contacts.html',
         controller: 'ContactsCtrl'
     });
+    $routeProvider.when('/contacts/guest', {
+        templateUrl: 'contacts/contacts.html',
+        controller: 'ContactsCtrl'
+    });
+
+    var guestState = {
+    name: 'guest',
+    url: 'contacts/guest',
+    templateUrl: 'guest/guest.html'
+  }
+  $stateProvider.state(guestState);
 }])
 
 .controller('ContactsCtrl', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
 
-    var ref = firebase.database().ref();
+    let ref = firebase.database().ref();
 
 
     $scope.events = $firebaseArray(ref);
