@@ -4,13 +4,19 @@
 angular.module('myApp', [
     'ngRoute',
     'firebase',
+    'myApp.login',
     'myApp.contacts',
-
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
-    $routeProvider.otherwise({
+    $routeProvider.when('/register', {
+        templateUrl: 'register/register.html',
+        controller: 'RegisterCtrl',
+        controllerAs: 'vm'
+    })
+
+.otherwise({
         redirectTo: '/'
     });
 }]);

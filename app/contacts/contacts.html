@@ -1,25 +1,85 @@
-<div class="row" ng-controller="ContactsCtrl">
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Meet-Up-Event-Planner</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse" ng-hide="contacts">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="/">Home</a>
+                </li>
+
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="row" ng-controller="ContactsCtrl" ng-model="contacts">
 <div class="col-md-5" ng-show="addFormShow">
-  <h3>Add contact</h3>
+
+  <h3>Add Event</h3>
   <form class="" ng-submit="addContact()">
     <div class="form-group row">
-      <label for="example-text-input" class="col-xs-2 col-form-label">Username</label>
-      <div class="col-xs-7">
-        <input class="form-control" type="text" value="Artisanal kale" ng-model="name">
+      <label for="event_name" class="autofill col-xs-3 control-label">Event Name</label>
+      <div class="col-xs-4">
+        <input type="text" class="form-control" id="event_name" ng-model="event_name" name="event_name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="event_type" class="col-xs-3 control-label" >Event Type</label>
+      <div class="col-xs-4">
+        <input type="text" class="form-control" ng-model="event_type" name="event_type" placeholder="birthday party, conference talk, wedding, etc.">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="event_host" class="col-xs-3 control-label">Event Host</label>
+      <div class="col-xs-4">
+        <input type="text" class="form-control" id="event_host" name="event_host" ng-model="event_host">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
-      <div class="col-xs-7">
-        <input class="form-control" type="email" value="bootstrap@example.com" ng-model="email">
+      <label for="starting-time" class="col-xs-3 control-label">Starting Time</label>
+      <div class='col-md-4'>
+        <div class='input-group date' id='datetimepicker6'>
+          <input type='text' class="form-control" ng-model = "starting_time"/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
-      <div class="col-xs-7">
-        <input class="form-control" type="password" value="hunter2" ng-model="password">
+      <label for="starting-time" class="col-xs-3 control-label">Finishing Time</label>
+      <div class='col-md-4'>
+        <div class='input-group date' id='datetimepicker7'>
+          <input type='text' class="form-control" ng-model = "finishing_time"/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-offset-3 col-xs-6">
+        <a>
+          <button type="submit" class="btn btn-default" ng-click="showGuestForm()">Add Guest List</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="location" class="col-xs-3 control-label">Location</label>
+      <div class="col-xs-4">
+        <input type="text" class="form-control" id="searchTextField" name="location" ng-model="location">
       </div>
     </div>
 
@@ -28,62 +88,61 @@
   </form>
 </div>
 <div class="col-md-5" ng-show="editFormShow">
-  <h3>Edit contact</h3>
-  <form class="" ng-submit="editContact()">
+  <h3>Edit Event</h3>
+  <form class="" ng-submit="editEvent()">
     <div class="form-group row">
-      <label for="example-text-input" class="col-xs-2 col-form-label">Username</label>
+      <label for="example-text-input" class="col-xs-2 col-form-label">Event Name</label>
       <div class="col-xs-7">
-        <input class="form-control" type="text" value="Artisanal kale" ng-model="name">
+        <input class="form-control" type="text" value="Artisanal kale" ng-model="event_name">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
+      <label for="example-email-input" class="col-xs-2 col-form-label">Event Type</label>
       <div class="col-xs-7">
-        <input class="form-control" type="email" value="bootstrap@example.com" ng-model="email">
+        <input class="form-control" type="text" value="bootstrap@example.com" ng-model="event_type">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
+      <label for="example-password-input" class="col-xs-2 col-form-label">Event Host</label>
       <div class="col-xs-7">
-        <input class="form-control" type="password" value="hunter2" ng-model="password">
+        <input class="form-control" type="text" value="hunter2" ng-model="event_host">
       </div>
     </div>
+
+
 
     <button type="submit" class="btn btn-default">Submit</button>
-
   </form>
+
 </div>
 <div class="col-md-7">
-  <h3>Contacts</h3>
+  <h3>Events</h3>
   <table class="table table-striped">
     <thead>
       <tr>
         <th>
-          Name
         </th>
         <th>
-          Email
         </th>
       </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="contact in contacts">
+        <tr ng-repeat="event in events">
           <td>
-            {{contact.name}}
+            {{event.event_name}}
           </td>
+
           <td>
-            {{contact.email}}
-          </td>
-          <td>
-            <button class="btn btn-default" ng-click="showEditForm(contact)">Edit</button>
-            <button class="btn btn-danger" ng-click="removeContact(contact)">Delete</button>
+            <button class="btn btn-default" ng-click="showEditForm(event)">Edit</button>
+            <button class="btn btn-danger" ng-click="removeEvent(event)">Delete</button>
           </td>
         </tr>
 
       </tbody>
 
   </table>
+  <p ng-submit="logout()"><a href="#/" class="btn btn-primary" type="submit">Logout</a></p>
 </div>
 </div>
