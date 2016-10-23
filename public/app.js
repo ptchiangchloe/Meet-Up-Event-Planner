@@ -19,6 +19,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
     })
 
 .otherwise({
-        redirectTo: '/'
+        // redirectTo: '/'
     });
 }]);
