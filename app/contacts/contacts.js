@@ -1,34 +1,37 @@
 'use strict';
 
-angular.module('myApp.contacts', ['ngRoute', 'ui.router'])
+angular.module('myApp.contacts', ['ngRoute'])
 
-.config(['$routeProvider','$stateProvider', function($routeProvider, $stateProvider) {
+.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/contacts', {
         templateUrl: 'contacts/contacts.html',
         controller: 'ContactsCtrl'
     });
-    $routeProvider.when('/contacts/guest', {
-        templateUrl: 'contacts/contacts.html',
-        controller: 'ContactsCtrl'
-    });
 
-    var guestState = {
-    name: 'guest',
-    url: 'contacts/guest',
-    templateUrl: 'guest/guest.html'
-  }
-  $stateProvider.state(guestState);
 }])
 
-.controller('ContactsCtrl', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
+.controller('ContactsCtrl', ['$scope', '$firebaseArray', '$location', function($scope, $firebaseArray,$location) {
 
     let ref = firebase.database().ref();
-
+    $scope.submit = function($event) {
+  // our function body
+  $event.preventDefault();
+}
 
     $scope.events = $firebaseArray(ref);
     $scope.addFormShow = true;
     $scope.editFormShow = false;
+    $scope.showGuestForm = false;
+
     $scope.addContact = function() {
+      var usersRef = ref.child($scope.event_name);
+  usersRef.set({
+    alanisawesome: {
+      date_of_birth: "June 23, 1912",
+      full_name: "Alan Turing"
+    }
+
+  });
         console.log('adding contact...');
         $scope.events.$add({
             event_name: $scope.event_name,
@@ -86,6 +89,10 @@ angular.module('myApp.contacts', ['ngRoute', 'ui.router'])
       $scope.editGuestShow = true;
     }
 
+
+
+
+
     $scope.logout = function(){
           firebase.auth().signOut().then(function() {
       console.log('Sign-out successful.')
@@ -93,5 +100,7 @@ angular.module('myApp.contacts', ['ngRoute', 'ui.router'])
       // An error happened.
     });
     }
+
+
 
 }]);

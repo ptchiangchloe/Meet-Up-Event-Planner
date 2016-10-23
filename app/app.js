@@ -6,6 +6,7 @@ angular.module('myApp', [
     'ui.router',
     'firebase',
     'myApp.login',
+    'myApp.guest',
     'myApp.contacts',
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
