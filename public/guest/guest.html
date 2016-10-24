@@ -32,13 +32,15 @@
   <form class="form-horizontal" >
     <legend>Add a new guest</legend>
 
-    <div class="control-group">
-      <label class="control-label">Event name:</label>
-
-      <div class="controls">
+    <form class="control-group">
+      <label for="repeatSelect">Event name:</label>
+      <select name="repeatSelect" id="repeatSelect" ng-model="data.model">
+            <option ng-repeat="event in events" value="{{event.id}}">{{event.$id}}</option>
+          </select>
+      <!-- <div class="controls">
         <input ng-model="event_name" type="text">
-      </div>
-    </div>
+      </div> -->
+    </form>
 
     <div class="control-group">
       <label class="control-label">First name:</label>

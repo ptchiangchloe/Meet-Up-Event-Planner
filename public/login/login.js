@@ -10,20 +10,33 @@ angular.module('myApp.login', ['ngRoute'])
 
 .controller('LoginCtrl', LoginController);
 
-LoginController.$inject = ['$firebaseArray','$location'];
+LoginController.$inject = ['$location'];
 
-function LoginController($firebaseArray, $location) {
+function LoginController($location) {
   let vm = this,
       ref = firebase.database().ref();
       console.log("its working.")
 
       vm.loginVerify  = function(){
-        firebase.auth().signInWithEmailAndPassword(vm.email, vm.password).catch(function(error) {
+        let auth = firebase.auth();
+        let promise = auth.signInWithEmailAndPassword(vm.email, vm.password);
+        promise
+          .catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
+  console.log(errorMessage);
   // ...
 });
-$location.path('/contacts');
+
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser) {
+        console.log(firebaseUser);
+        $location.path('/contacts');
+    } else {
+        console.log('Not log in.');
+    }
+})
+
 }
 }

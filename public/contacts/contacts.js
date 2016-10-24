@@ -5,7 +5,8 @@ angular.module('myApp.contacts', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/contacts', {
         templateUrl: 'contacts/contacts.html',
-        controller: 'ContactsCtrl'
+        controller: 'ContactsCtrl',
+        isLogin: true
     });
 
 }])
@@ -16,7 +17,45 @@ angular.module('myApp.contacts', ['ngRoute'])
     $scope.events = $firebaseArray(ref);
     $scope.addFormShow = true;
     $scope.editFormShow = false;
-    $scope.showGuestForm = false;
+
+    /* Bindable functions
+ -----------------------------------------------*/
+$scope.endDateBeforeRender = endDateBeforeRender
+$scope.endDateOnSetTime = endDateOnSetTime
+$scope.startDateBeforeRender = startDateBeforeRender
+$scope.startDateOnSetTime = startDateOnSetTime
+
+function startDateOnSetTime () {
+  $scope.$broadcast('start-date-changed');
+}
+
+function endDateOnSetTime () {
+  $scope.$broadcast('end-date-changed');
+}
+
+function startDateBeforeRender ($dates) {
+  if ($scope.dateRangeEnd) {
+    var activeDate = moment($scope.dateRangeEnd);
+
+    $dates.filter(function (date) {
+      return date.localDateValue() >= activeDate.valueOf()
+    }).forEach(function (date) {
+      date.selectable = false;
+    })
+  }
+}
+
+function endDateBeforeRender ($view, $dates) {
+  if ($scope.dateRangeStart) {
+    var activeDate = moment($scope.dateRangeStart).subtract(1, $view).add(1, 'minute');
+
+    $dates.filter(function (date) {
+      return date.localDateValue() <= activeDate.valueOf()
+    }).forEach(function (date) {
+      date.selectable = false;
+    })
+  }
+};
 
     $scope.addContact = function() {
       var usersRef = ref.child($scope.event_name);
@@ -43,15 +82,16 @@ angular.module('myApp.contacts', ['ngRoute'])
     $scope.showEditForm = function (event) {
       $scope.addFormShow = false;
       $scope.editFormShow = true;
-
+      console.log(event);
       $scope.id = event.$id;
-      $scope.event_name = event.event_name;
+      $scope.event_name = event.$id;
       $scope.event_type = event.event_type;
       $scope.event_host = event.event_host;
     }
 
-    $scope.editEvent = function(){
+    $scope.editEvent = function(event){
       var id = $scope.id;
+      console.log(id);
 
       var record = $scope.events.$getRecord(id);
 
