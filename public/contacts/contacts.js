@@ -5,8 +5,7 @@ angular.module('myApp.contacts', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/contacts', {
         templateUrl: 'contacts/contacts.html',
-        controller: 'ContactsCtrl',
-        isLogin: true
+        controller: 'ContactsCtrl'
     });
 
 }])
