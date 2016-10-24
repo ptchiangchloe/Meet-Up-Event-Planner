@@ -15,7 +15,8 @@
                   <li class="active">
                       <a href="/">Home</a>
                   </li>
-
+                  <li>Welcome user {{ authData.uid }}
+</li>
               </ul>
           </div>
           <!--/.nav-collapse -->
@@ -47,10 +48,7 @@
       </div>
 
 
-    
-
-
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="starting-time" class="col-xs-3 control-label">Starting Time</label>
         <div class='col-md-4'>
           <div class='input-group date' id='datetimepicker6'>
@@ -72,7 +70,7 @@
             </span>
           </div>
         </div>
-      </div> -->
+      </div>
       <div class="form-group row">
         <label for="location" class="col-xs-3 control-label">Location</label>
         <div class="col-xs-4">
@@ -89,36 +87,38 @@
       </a>
 
     </div>
-    <div class="col-md-5" ng-show="editFormShow">
-    <h3>Edit Event</h3>
-    <form class="" ng-submit="editEvent()">
-    <div class="form-group row">
-    <label for="example-text-input" class="col-xs-2 col-form-label">Event Name</label>
-    <div class="col-xs-7">
-      <input class="form-control" type="text" value="Artisanal kale" ng-model="event_name">
-    </div>
-    </div>
-
-    <div class="form-group row">
-    <label for="example-email-input" class="col-xs-2 col-form-label">Event Type</label>
-    <div class="col-xs-7">
-      <input class="form-control" type="text" value="bootstrap@example.com" ng-model="event_type">
-    </div>
-    </div>
-
-    <div class="form-group row">
-    <label for="example-password-input" class="col-xs-2 col-form-label">Event Host</label>
-    <div class="col-xs-7">
-      <input class="form-control" type="text" value="hunter2" ng-model="event_host">
-    </div>
-    </div>
 
 
+  </div>
 
-    <button type="submit" class="btn btn-default" ng-click="">Submit</button>
-    </form>
+  <div class="col-md-5" ng-show="editFormShow">
+  <h3>Edit Event</h3>
+  <form class="" ng-submit="editEvent()">
+  <div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">Event Name</label>
+  <div class="col-xs-7">
+    <input class="form-control" type="text" value="Artisanal kale" ng-model="event_name">
+  </div>
+  </div>
 
-    </div>
+  <div class="form-group row">
+  <label for="example-email-input" class="col-xs-2 col-form-label">Event Type</label>
+  <div class="col-xs-7">
+    <input class="form-control" type="text" value="bootstrap@example.com" ng-model="event_type">
+  </div>
+  </div>
+
+  <div class="form-group row">
+  <label for="example-password-input" class="col-xs-2 col-form-label">Event Host</label>
+  <div class="col-xs-7">
+    <input class="form-control" type="text" value="hunter2" ng-model="event_host">
+  </div>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-default" ng-click="">Submit</button>
+  </form>
 
   </div>
 

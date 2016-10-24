@@ -5,7 +5,8 @@ angular.module('myApp.contacts', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/contacts', {
         templateUrl: 'contacts/contacts.html',
-        controller: 'ContactsCtrl'
+        controller: 'ContactsCtrl',
+        isLogin: true
     });
 
 }])
@@ -16,7 +17,6 @@ angular.module('myApp.contacts', ['ngRoute'])
     $scope.events = $firebaseArray(ref);
     $scope.addFormShow = true;
     $scope.editFormShow = false;
-    $scope.showGuestForm = false;
 
     $scope.addContact = function() {
       var usersRef = ref.child($scope.event_name);
@@ -43,15 +43,16 @@ angular.module('myApp.contacts', ['ngRoute'])
     $scope.showEditForm = function (event) {
       $scope.addFormShow = false;
       $scope.editFormShow = true;
-
+      console.log(event);
       $scope.id = event.$id;
-      $scope.event_name = event.event_name;
+      $scope.event_name = event.$id;
       $scope.event_type = event.event_type;
       $scope.event_host = event.event_host;
     }
 
-    $scope.editEvent = function(){
+    $scope.editEvent = function(event){
       var id = $scope.id;
+      console.log(id);
 
       var record = $scope.events.$getRecord(id);
 
