@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js">
+    <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Meet-Up-Event-Planner</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+        <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+        <link rel="stylesheet" href="app.css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+
+
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div ng-view></div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+        <script type="text/javascript">
+$(document).ready(function() {
+        $(function () {
+            $('#datetimepicker6').datetimepicker();
+            $('#datetimepicker7').datetimepicker({
+                useCurrent: false //Important! See issue #1075
+            });
+            $("#datetimepicker6").on("dp.change", function (e) {
+                $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+            });
+            $("#datetimepicker7").on("dp.change", function (e) {
+                $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+            });
+        });
+    });
+</script>
+
+
+        <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+
+
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyCLeGpFoe1YyLV5FopAe9jgzVLOZMPXTqA",
+            authDomain: "meet-up-event-planner-d45a4.firebaseapp.com",
+            databaseURL: "https://meet-up-event-planner-d45a4.firebaseio.com",
+            storageBucket: "meet-up-event-planner-d45a4.appspot.com",
+            messagingSenderId: "711700494163"
+          };
+          firebase.initializeApp(config);
+
+        </script>
+
+
+        <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angularfire/dist/angularfire.js"></script>
+        <script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+        <script src="app.js"></script>
+        <script src="contacts/contacts.js"></script>
+        <script src="guest/guest.js"></script>
+        <script src="login/login.js"></script>
+        <script src="register/register.js"></script>
+        <script src="components/version/version.js"></script>
+        <script src="components/version/version-directive.js"></script>
+        <script src="components/version/interpolate-filter.js"></script>
+    </body>
+</html>
