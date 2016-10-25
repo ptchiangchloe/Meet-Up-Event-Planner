@@ -23,65 +23,65 @@
 
 
 <form ng-submit="addGuest()">
-<div class="container row" ng-show="!showGuestForm">
-<div class="col-md-5">
-  <div class="hero-unit">
-    <h2>Guest List</h2>
-  </div>
+    <div class="container row" ng-show="!showGuestForm">
+        <div class="col-md-5">
+            <div class="hero-unit">
+                <h2>Guest List</h2>
+            </div>
 
-  <form class="form-horizontal" >
-    <legend>Add a new guest</legend>
+            <form class="form-horizontal">
+                <legend>Add a new guest</legend>
 
-    <form class="control-group">
-      <label for="repeatSelect">Event name:</label>
-      <select name="repeatSelect" id="repeatSelect" ng-model="selected" ng-change="changeSelectedItem()" >
+                <form class="control-group">
+                    <label for="repeatSelect">Event name:</label>
+                    <select name="repeatSelect" id="repeatSelect" ng-model="selected" ng-change="changeSelectedItem()">
             <option  ng-repeat="event in events" ng-selected="selected">{{event.$id}}</option>
           </select>
-          <!-- <h1>You selected: {{selected}}</h1> -->
-      <!-- <div class="controls">
+                    <!-- <h1>You selected: {{selected}}</h1> -->
+                    <!-- <div class="controls">
         <input ng-model="event_name" type="text">
       </div> -->
-    </form>
+                </form>
 
-    <div class="control-group">
-      <label class="control-label">First name:</label>
+                <div class="control-group">
+                    <label class="control-label">First name:</label>
 
-      <div class="controls">
-        <input ng-model="guest_first_name" type="text">
-      </div>
-    </div>
+                    <div class="controls">
+                        <input ng-model="guest_first_name" type="text">
+                    </div>
+                </div>
 
-    <div class="control-group">
-      <label class="control-label">Last name:</label>
+                <div class="control-group">
+                    <label class="control-label">Last name:</label>
 
-      <div class="controls">
-        <input ng-model="guest_last_name" type="text">
-      </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label">Email:</label>
+                    <div class="controls">
+                        <input ng-model="guest_last_name" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Email:</label>
 
-      <div class="controls">
-        <input ng-model="guest_email" type="text">
-      </div>
-    </div>
-    <div  >
-      <div>
-        <button type="button"class="btn btn-default gl-btn" ng-click="addGuest()" >Add</button>
-      </div>
-    </div>
-  </form>
-</div>
+                    <div class="controls">
+                        <input ng-model="guest_email" type="text">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <button type="button" class="btn btn-default gl-btn" ng-click="addGuest()">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-<div class="col-md-7" >
-  <h3>Guests</h3>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>
-          Event Name
-        </th>
-        <!-- <th>
+        <div class="col-md-7">
+            <h3>Guests</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Event Name
+                        </th>
+                        <!-- <th>
           First Name
         </th>
         <th>
@@ -90,15 +90,15 @@
         <th>
           Email
         </th> -->
-      </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="event in events">
-          <td>
-            {{event.$id}}
-          </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="event in events">
+                        <td>
+                            {{event.$id}}
+                        </td>
 
-          <!-- <td>
+                        <!-- <td>
             {{event.guest_first_name}}
           </td>
           <td>
@@ -108,16 +108,16 @@
             {{event.guest_email}}
           </td> -->
 
-        </tr>
+                    </tr>
 
-      </tbody>
+                </tbody>
 
-  </table>
-  <div class=" ">
-    <a href="#!/contacts"><button  type="submit"class="btn btn-default gl-btn" ng-click="">Close</button></a>
+            </table>
+            <div class=" ">
+                <a href="#!/contacts"><button  type="submit"class="btn btn-default gl-btn" ng-click="">Close</button></a>
 
-  </div>
-</div>
+            </div>
+        </div>
 
-</div>
+    </div>
 </form>

@@ -13,23 +13,23 @@ angular.module('myApp.login', ['ngRoute'])
 LoginController.$inject = ['$location'];
 
 function LoginController($location) {
-  let vm = this,
-      ref = firebase.database().ref();
-      console.log("its working.")
+    let vm = this,
+        ref = firebase.database().ref();
+    console.log("its working.")
 
-      vm.loginVerify  = function(){
+    vm.loginVerify = function() {
         let auth = firebase.auth();
         let promise = auth.signInWithEmailAndPassword(vm.email, vm.password);
         promise
-          .catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  console.log(errorMessage);
-  $location.path('/');
-  // ...
-});
+            .catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorMessage);
+                $location.path('/');
+                // ...
+            });
 
-  $location.path('/contacts');
-}
+        $location.path('/contacts');
+    }
 }
