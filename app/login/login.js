@@ -26,9 +26,10 @@ function LoginController($location) {
   var errorCode = error.code;
   var errorMessage = error.message;
   console.log(errorMessage);
+  $location.path('/');
   // ...
 });
 
-
+  $location.path('/contacts');
 }
 }

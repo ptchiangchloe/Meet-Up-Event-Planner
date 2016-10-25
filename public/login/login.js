@@ -26,17 +26,10 @@ function LoginController($location) {
   var errorCode = error.code;
   var errorMessage = error.message;
   console.log(errorMessage);
+  $location.path('/');
   // ...
 });
 
-firebase.auth().onAuthStateChanged(firebaseUser => {
-    if (firebaseUser) {
-        console.log(firebaseUser);
-        $location.path('/contacts');
-    } else {
-        console.log('Not log in.');
-    }
-})
-
+  $location.path('/contacts');
 }
 }

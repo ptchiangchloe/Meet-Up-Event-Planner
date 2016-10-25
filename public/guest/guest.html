@@ -34,9 +34,10 @@
 
     <form class="control-group">
       <label for="repeatSelect">Event name:</label>
-      <select name="repeatSelect" id="repeatSelect" ng-model="data.model">
-            <option ng-repeat="event in events" value="{{event.id}}">{{event.$id}}</option>
+      <select name="repeatSelect" id="repeatSelect" ng-model="selected" ng-change="changeSelectedItem()" >
+            <option  ng-repeat="event in events" ng-selected="selected">{{event.$id}}</option>
           </select>
+          <!-- <h1>You selected: {{selected}}</h1> -->
       <!-- <div class="controls">
         <input ng-model="event_name" type="text">
       </div> -->
