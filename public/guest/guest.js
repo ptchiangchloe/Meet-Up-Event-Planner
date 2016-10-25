@@ -14,7 +14,8 @@ function GuestController($scope, $firebaseArray, $location) {
   let ref = firebase.database().ref();
 $scope.events = $firebaseArray(ref);
           $scope.addGuest = function () {
-            var usersRef = ref.child($scope.event_name);
+            console.log($scope.selected);
+            var usersRef = ref.child($scope.selected);
 
             usersRef.push({
   guest_last_name : $scope.guest_last_name,
@@ -29,6 +30,10 @@ $scope.events = $firebaseArray(ref);
             });
 
           }
+
+          $scope.changeSelectedItem = function(){
+
+}
 
           $scope.removeGuest = function(guest){
             $scope.guests.$remove(guest);
