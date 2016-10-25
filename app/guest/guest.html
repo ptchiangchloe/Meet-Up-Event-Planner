@@ -20,8 +20,6 @@
         <!--/.nav-collapse -->
     </div>
 </nav>
-
-
 <form ng-submit="addGuest()">
     <div class="container row" ng-show="!showGuestForm">
         <div class="col-md-5">
@@ -35,12 +33,8 @@
                 <form class="control-group">
                     <label for="repeatSelect">Event name:</label>
                     <select name="repeatSelect" id="repeatSelect" ng-model="selected" ng-change="changeSelectedItem()">
-            <option  ng-repeat="event in events" ng-selected="selected">{{event.$id}}</option>
-          </select>
-                    <!-- <h1>You selected: {{selected}}</h1> -->
-                    <!-- <div class="controls">
-        <input ng-model="event_name" type="text">
-      </div> -->
+                      <option  ng-repeat="event in events" ng-selected="selected">{{event.$id}}</option>
+                    </select>
                 </form>
 
                 <div class="control-group">
@@ -81,15 +75,6 @@
                         <th>
                             Event Name
                         </th>
-                        <!-- <th>
-          First Name
-        </th>
-        <th>
-          Last Name
-        </th>
-        <th>
-          Email
-        </th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -97,17 +82,6 @@
                         <td>
                             {{event.$id}}
                         </td>
-
-                        <!-- <td>
-            {{event.guest_first_name}}
-          </td>
-          <td>
-            {{event.guest_last_name}}
-          </td>
-          <td>
-            {{event.guest_email}}
-          </td> -->
-
                     </tr>
 
                 </tbody>

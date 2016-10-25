@@ -31,10 +31,6 @@ function GuestController($scope, $firebaseArray, $location) {
 
     }
 
-    $scope.changeSelectedItem = function() {
-
-    }
-
     $scope.removeGuest = function(guest) {
         $scope.guests.$remove(guest);
     }
