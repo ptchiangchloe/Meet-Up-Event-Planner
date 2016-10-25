@@ -29,14 +29,6 @@ function LoginController($location) {
   // ...
 });
 
-firebase.auth().onAuthStateChanged(firebaseUser => {
-    if (firebaseUser) {
-        console.log(firebaseUser);
-        $location.path('/contacts');
-    } else {
-        console.log('Not log in.');
-    }
-})
 
 }
 }
