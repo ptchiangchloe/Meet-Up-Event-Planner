@@ -19,17 +19,28 @@ function LoginController($location) {
 
     vm.loginVerify = function() {
         let auth = firebase.auth();
-        let promise = auth.signInWithEmailAndPassword(vm.email, vm.password);
-        promise
-            .catch(function(error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log(errorMessage);
-                $location.path('/');
-                // ...
-            });
 
-        $location.path('/contacts');
+        new Promise(function(resolve, reject) {
+            firebase.auth().onAuthStateChanged(firebaseUser => {
+                if (firebaseUser) {
+                    console.log(firebaseUser);
+                    resolve();
+                } else {
+                    console.log('Not log in.');
+                    reject()
+                }
+            })
+        }).then(function() {
+            $location.path('/contacts');
+        })
+
+        .catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage);
+            $location.path('/');
+            // ...
+        });
     }
 }

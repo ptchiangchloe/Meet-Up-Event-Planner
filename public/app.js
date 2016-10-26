@@ -12,12 +12,12 @@
     // Declare app level module which depends on views, and components
     angular.module('myApp', [
         'ngRoute',
-        'ui.dateTimeInput',
         'firebase',
         'myApp.login',
         'myApp.guest',
         'myApp.contacts',
-        'ui.bootstrap.datetimepicker'
+        'ui.bootstrap.datetimepicker',
+        'ui.dateTimeInput'
     ]).
     config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
         $locationProvider.hashPrefix('!');
