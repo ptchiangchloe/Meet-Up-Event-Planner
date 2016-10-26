@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.contacts', ['ngRoute'])
+angular.module('myApp.contacts', ['ngRoute','ui.bootstrap.datetimepicker','ui.dateTimeInput'])
 
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/contacts', {
@@ -60,19 +60,29 @@ angular.module('myApp.contacts', ['ngRoute'])
     $scope.addContact = function() {
         var usersRef = ref.child($scope.event_name);
         console.log('adding contact...' + usersRef);
-        usersRef.set({
-            event_type: $scope.event_type,
-            event_host: $scope.event_host,
-
-        }).then(function(ref) {
-            // var id = ref.key;
-            // console.log('Update Contact ' + id);
-            $scope.event_name = "";
-            $scope.event_type = "";
-            $scope.event_host = "";
-
+        let datest = $scope.dateRangeStart;
+        console.log($scope.add_end_time);
+        new Promise(function(resolve) {
+          usersRef.set({
+              event_type: $scope.event_type,
+              event_host: $scope.event_host,
+              start_time: $scope.add_start_time.toString().slice(0,11),
+              end_time: $scope.add_end_time.toString().slice(0,11),
+              location: $scope.location
+          });
+          resolve();
+        })
+        .then(function(){
+            // var id = ref.key.$id;
+            console.log('It\'s a promise');
 
         });
+        $scope.event_name = "";
+        $scope.event_type = "";
+        $scope.event_host = "";
+        $scope.add_start_time = "";
+        $scope.add_end_time = "";
+        $scope.location = "";
     }
 
     $scope.removeEvent = function(event) {
@@ -87,6 +97,7 @@ angular.module('myApp.contacts', ['ngRoute'])
         $scope.event_name = event.$id;
         $scope.event_type = event.event_type;
         $scope.event_host = event.event_host;
+        $scope.location = event.location;
     }
 
     $scope.editEvent = function(event) {
@@ -94,10 +105,13 @@ angular.module('myApp.contacts', ['ngRoute'])
         console.log(id);
 
         var record = $scope.events.$getRecord(id);
-
+        console.log(record);
         record.event_name = $scope.event_name;
         record.event_type = $scope.event_type;
         record.event_host = $scope.event_host;
+        record.start_time = $scope.edit_start_time;
+        record.end_time = $scope.edit_end_time;
+        record.location = $scope.location;
         //save
         $scope.events.$save(record).then(function(ref) {
             console.log(ref.key);
@@ -106,6 +120,9 @@ angular.module('myApp.contacts', ['ngRoute'])
         $scope.event_name = "";
         $scope.event_type = "";
         $scope.event_host = "";
+        $scope.edit_start_time = "";
+        $scope.edit_end_time = "";
+        $scope.location = "";
 
         $scope.addFormShow = true;
         $scope.editFormShow = false;

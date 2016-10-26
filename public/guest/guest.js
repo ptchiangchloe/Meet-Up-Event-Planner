@@ -21,17 +21,14 @@ function GuestController($scope, $firebaseArray, $location) {
             guest_last_name: $scope.guest_last_name,
             guest_first_name: $scope.guest_first_name,
             guest_email: $scope.guest_email
-        }).then(function(ref) {
-            var id = ref.key;
-            console.log('Update Contact ' + id);
-            $scope.guest_first_name = "";
-            $scope.guest_last_name = "";
-            $scope.guest_email = "";
+        }).then(function() {
+            // var id = ref.key;
+            // console.log('Update Contact ' + id);
+
         });
-
-    }
-
-    $scope.changeSelectedItem = function() {
+        $scope.guest_first_name = "";
+        $scope.guest_last_name = "";
+        $scope.guest_email = "";
 
     }
 

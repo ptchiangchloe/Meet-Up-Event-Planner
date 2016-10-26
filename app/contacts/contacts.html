@@ -52,12 +52,12 @@
     <label class="col-xs-3">Start Date</label>
     <a class="dropdown-toggle" id="dropdownStart" role="button" data-toggle="dropdown" data-target="#" >
         <div class="input-group date col-xs-4">
-            <input type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" ng-model="dateRangeStart">
+            <input type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" ng-model="add_start_time">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
         </div>
     </a>
     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-        <datetimepicker ng-model="dateRangeStart"
+        <datetimepicker ng-model="add_start_time"
                         data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed' }"
                         data-on-set-time="startDateOnSetTime()"
                         data-before-render="startDateBeforeRender($dates)"></datetimepicker>
@@ -69,12 +69,12 @@
     <a class="dropdown-toggle" id="dropdownEnd" role="button" data-toggle="dropdown" data-target="#"
        >
         <div class="input-group date col-xs-4">
-            <input type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" ng-model="dateRangeEnd">
+            <input type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" ng-model="add_end_time">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
         </div>
     </a>
     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-        <datetimepicker ng-model="dateRangeEnd"
+        <datetimepicker ng-model="add_end_time"
                         data-datetimepicker-config="{ dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed' }"
                         data-on-set-time="endDateOnSetTime()"
                         data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
@@ -128,12 +128,12 @@
     <label class="col-xs-3">Start Date</label>
     <a class="dropdown-toggle" id="dropdownStart" role="button" data-toggle="dropdown" data-target="#" >
         <div class="input-group date col-xs-4">
-            <input type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" ng-model="dateRangeStart">
+            <input type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" ng-model="edit_start_time">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
         </div>
     </a>
     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-        <datetimepicker ng-model="dateRangeStart"
+        <datetimepicker ng-model="edit_start_time"
                         data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed' }"
                         data-on-set-time="startDateOnSetTime()"
                         data-before-render="startDateBeforeRender($dates)"></datetimepicker>
@@ -142,10 +142,9 @@
 
 <div class="dropdown form-group  row">
     <label class="col-xs-3">End Date</label>
-    <a class="dropdown-toggle" id="dropdownEnd" role="button" data-toggle="dropdown" data-target="#"
-       >
+    <a class="dropdown-toggle" id="dropdownEnd" role="button" data-toggle="dropdown" data-target="#">
         <div class="input-group date col-xs-4">
-            <input type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" ng-model="dateRangeEnd">
+            <input type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" ng-model="">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
         </div>
     </a>
@@ -156,6 +155,7 @@
                         data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
     </ul>
 </div>
+
                 <div class="form-group row">
                     <label for="location" class="col-xs-3 control-label">Location</label>
                     <div class="col-xs-4">

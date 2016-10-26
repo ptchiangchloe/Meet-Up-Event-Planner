@@ -1,0 +1,22 @@
+function isUser (auth, userKey){
+  return auth.uid == userKey;
+}
+
+function isAdmin(auth) {
+  return root.child('authentication').child('user').child(auth.uid).child('isAdmin').val() == true;
+}
+path /authentication/users/{uid} {
+  read() { isUser(auth, uid) || isAdmin(auth)}
+  write() { isAdmin(auth)}
+  index() { ["email"]}
+}
+
+path /authentication/userOwned/{objectType}/{uid} {
+  read() {isUser(auth, uid) || isAdmin(auth)}
+  write() {isUser(auth, uid) || isAdmin(auth)}
+}
+
+path /authentication/userOwned/preferences/{uid} is Preferences {
+  read() { isUser(auth, uid)}
+  write() { isUser(auth, uid)}
+}
