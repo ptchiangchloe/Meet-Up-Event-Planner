@@ -30,10 +30,7 @@ function LoginController($location) {
                     reject()
                 }
             })
-        }).then(function() {
-            $location.path('/contacts');
         })
-
         .catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
@@ -42,5 +39,7 @@ function LoginController($location) {
             $location.path('/');
             // ...
         });
+
+        $location.path('/contacts');
     }
 }

@@ -14,9 +14,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active">
                         <a href="/">Home</a>
-                    </li>
-                    <li>Welcome user {{ authData.uid }}
-                    </li>
+
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -144,12 +142,12 @@
     <label class="col-xs-3">End Date</label>
     <a class="dropdown-toggle" id="dropdownEnd" role="button" data-toggle="dropdown" data-target="#">
         <div class="input-group date col-xs-4">
-            <input type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" ng-model="">
+            <input type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" ng-model="edit_end_time">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
         </div>
     </a>
     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-        <datetimepicker ng-model="dateRangeEnd"
+        <datetimepicker ng-model="edit_end_time"
                         data-datetimepicker-config="{ dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed' }"
                         data-on-set-time="endDateOnSetTime()"
                         data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>

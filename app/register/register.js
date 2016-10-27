@@ -9,31 +9,19 @@
 
     function RegisterController($firebaseArray, $location) {
         let vm = this;
-
         vm.createAccount = function() {
             let auth = firebase.auth();
             let promise = auth.createUserWithEmailAndPassword(vm.email, vm.password);
-
-            new Promise(function  (resolve, ) {
-              // body...
-            })
             promise
-                .catch(function(error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    // ...
-                });
-            // Add a realtime listener
-            firebase.auth().onAuthStateChanged(firebaseUser => {
-                if (firebaseUser) {
-                    console.log(firebaseUser);
+            .then(function () {
 
-                } else {
-                    console.log('Not log in.');
-                    $location.path('/');
-                }
             })
+            .catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+            });
             $location.path('/contacts');
         };
     }

@@ -8,7 +8,6 @@ angular.module('myApp.contacts', ['ngRoute','ui.bootstrap.datetimepicker','ui.da
         controller: 'ContactsCtrl',
         isLogin: true
     });
-
 }])
 
 .controller('ContactsCtrl', ['$scope', '$firebaseArray', '$location', function($scope, $firebaseArray, $location) {
