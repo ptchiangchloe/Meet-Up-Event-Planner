@@ -27,7 +27,7 @@ function LoginController($location) {
                     resolve();
                 } else {
                     console.log('Not log in.');
-                    reject()
+                    reject();
                 }
             })
         })

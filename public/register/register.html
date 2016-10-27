@@ -16,7 +16,12 @@
     <h2>Register</h2>
     <form name="form" role="form" ng-submit="vm.createAccount()">
         <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
-            <label for="username">Email</label>
+            <label for="username">User Name</label>
+            <input type="text" name="username" class="form-control" ng-model="vm.text" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label for="email">Email</label>
             <input type="email" name="username" class="form-control" ng-model="vm.email" required />
             <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Email is required</span>
         </div>
