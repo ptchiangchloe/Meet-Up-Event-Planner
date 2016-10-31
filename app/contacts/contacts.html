@@ -27,34 +27,34 @@
                 <div class="form-group row">
                     <label for="event_name" class="autofill col-xs-3 control-label">Event Name</label>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control" id="event_name" ng-model="event_name" name="event_name">
+                        <input type="text" class="form-control" id="event_name" ng-model="event_name" name="event_name" required autofocus>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="event_type" class="col-xs-3 control-label">Event Type</label>
                     <div class="col-xs-4">
-                        <input id="event_type" type="text" class="form-control" ng-model="event_type" name="event_type" placeholder="birthday party, conference talk, wedding, etc.">
+                        <input id="event_type" type="text" class="form-control" ng-model="event_type" name="event_type" placeholder="birthday party, conference talk, wedding, etc." required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="event_host" class="col-xs-3 control-label">Event Host</label>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control" id="event_host" name="event_host" ng-model="event_host">
+                        <input type="text" class="form-control" id="event_host" name="event_host" ng-model="event_host" required>
                     </div>
                 </div>
                 <div class="dropdown form-group  row">
               <label for="start_time" class="col-xs-3">Start Date</label>
               <a class="dropdown-toggle" id="dropdownStart" role="button" data-toggle="dropdown" data-target="#" >
                 <div class="input-group date col-xs-4">
-                    <input id="start_time"type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" ng-model="add_start_time">
+                    <input id="start_time"type="text" class="form-control" data-date-time-input="YYYY-MMM-DD" min-date="mindate" ng-model="add_start_time">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                         <datetimepicker ng-model="add_start_time"
-                                        data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed' }"
+                                        data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed'}"
                                         data-on-set-time="startDateOnSetTime()"
-                                        data-before-render="startDateBeforeRender($dates)"></datetimepicker>
+                                        data-before-render="startDateBeforeRender($dates)" ></datetimepicker>
                     </ul>
                 </div>
 
@@ -76,7 +76,7 @@
                 <div class="form-group row">
                     <label for="location" class="col-xs-3 control-label">Location</label>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control" id="location" name="location" ng-model="location">
+                        <input type="text" class="form-control" id="location" name="location" ng-model="location" required>
                     </div>
                 </div>
 

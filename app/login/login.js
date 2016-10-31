@@ -13,6 +13,9 @@ angular.module('myApp.login', ['ngRoute'])
 LoginController.$inject = ['$location'];
 
 function LoginController($location) {
+    let $email = $('#login_email');
+    $email.setCustomValidity('This field is required');
+
     let vm = this,
         ref = firebase.database().ref();
     console.log("its working.")

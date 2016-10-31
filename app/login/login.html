@@ -15,16 +15,20 @@
     </nav>
 
     <div class="row">
-        <form ng-submit="vm.loginVerify()">
+        <form ng-submit="vm.loginVerify()" name="login-form">
             <div class="col-md-offset-4 col-md-3">
                 <div class="form-login">
                     <h4>Welcome back.</h4>
                       <label for="email">
-                        <input type="email" id="email" class="form-control input-sm chat-input" placeholder="Email" ng-model="vm.email" />
+                        <input type="email" name="email" id="login_email"  class="form-control input-sm chat-input" placeholder="Email" ng-model="vm.email" required autofocus/>
+                        <div ng-messages="login-form.email.$error">
+                          <p ng-message="required">This field is required</p>
+                          <p ng-message="email">Your email address is invalid</p>
+                        </div>
                       </label>
                     </br>
                     <label for="userPassword">
-                      <input type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="Password" ng-model="vm.password" />
+                      <input type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="Password" ng-model="vm.password" required/>
                     </label>
                     </br>
                     <div class="wrapper" type="submit">
