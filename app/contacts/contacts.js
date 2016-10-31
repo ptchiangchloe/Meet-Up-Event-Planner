@@ -41,7 +41,7 @@ angular.module('myApp.contacts', ['ngRoute','ui.bootstrap.datetimepicker','ui.da
     function startDateBeforeRender($dates) {
         console.log($dates);
         $dates.forEach(function  (date) {
-          if (date < $scope.dt) {
+          if (date.localDateValue() < $scope.dt.getTime()) {
             date.selectable = false;
           }
         });
