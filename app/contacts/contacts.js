@@ -32,27 +32,24 @@ angular.module('myApp.contacts', ['ngRoute','ui.bootstrap.datetimepicker','ui.da
         $scope.$broadcast('end-date-changed');
     }
 
-    // $scope.today = function () {
-    //             $scope.dt = new Date();
-    //         };
-    // $scope.mindate = new Date();
-    // $scope.dateformat="MM/dd/yyyy";
-    // $scope.today();
-    // $scope.showcalendar = function ($event) {
-    //     $scope.showdp = true;
-    // };
-    // $scope.showdp = false;
+    $scope.today = function () {
+        $scope.dt = new Date();
+    };
+    $scope.today();
+
 
     function startDateBeforeRender($dates) {
         console.log($dates);
         $dates.forEach(function  (date) {
-          date.past = false;
+          if (date < $scope.dt) {
+            date.selectable = false;
+          }
         });
         if ($scope.add_end_time) {
             var activeDate = moment($scope.add_end_time);
             console.log(activeDate);
             $dates.filter(function(date) {
-                return date.localDateValue() <= activeDate.valueOf()
+                return date.localDateValue() >= activeDate.valueOf()
             }).forEach(function(date) {
                 date.selectable = false;
             })
