@@ -13,6 +13,9 @@ angular.module('myApp.login', ['ngRoute'])
 LoginController.$inject = ['$location'];
 
 function LoginController($location) {
+    let $email = $('#login_email');
+    $email.setCustomValidity('This field is required');
+
     let vm = this,
         ref = firebase.database().ref();
     console.log("its working.")
@@ -27,13 +30,10 @@ function LoginController($location) {
                     resolve();
                 } else {
                     console.log('Not log in.');
-                    reject()
+                    reject();
                 }
             })
-        }).then(function() {
-            $location.path('/contacts');
         })
-
         .catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
@@ -42,5 +42,7 @@ function LoginController($location) {
             $location.path('/');
             // ...
         });
+
+        $location.path('/contacts');
     }
 }
