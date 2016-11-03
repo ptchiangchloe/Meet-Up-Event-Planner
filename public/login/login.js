@@ -18,7 +18,7 @@ function LoginController($location) {
     console.log("its working.")
 
     vm.loginVerify = function() {
-        new Promise(firebase.auth().signInWithEmailAndPassword(vm.email, vm.password))
+        firebase.auth().signInWithEmailAndPassword(vm.email, vm.password)
         .then(function(response) {
           console.log("Success!", response); // the first I run this fn, firebase authenticate the visiter is a user but it didn't route to my contact page
           $location.path('/contacts');// the second time I click, firebase authenticate the visiter is a user again and route the user to the landing page
