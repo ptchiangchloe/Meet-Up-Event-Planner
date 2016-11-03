@@ -17,7 +17,8 @@
         'myApp.guest',
         'myApp.contacts',
         'ui.bootstrap.datetimepicker',
-        'ui.dateTimeInput'
+        'ui.dateTimeInput',
+        'ngMessages'
     ]).
     config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
         $locationProvider.hashPrefix('!');

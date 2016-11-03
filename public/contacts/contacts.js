@@ -8,7 +8,6 @@ angular.module('myApp.contacts', ['ngRoute','ui.bootstrap.datetimepicker','ui.da
         controller: 'ContactsCtrl',
         isLogin: true
     });
-
 }])
 
 .controller('ContactsCtrl', ['$scope', '$firebaseArray', '$location', function($scope, $firebaseArray, $location) {
@@ -33,10 +32,22 @@ angular.module('myApp.contacts', ['ngRoute','ui.bootstrap.datetimepicker','ui.da
         $scope.$broadcast('end-date-changed');
     }
 
-    function startDateBeforeRender($dates) {
-        if ($scope.dateRangeEnd) {
-            var activeDate = moment($scope.dateRangeEnd);
+    $scope.today = function () {
+        $scope.dt = new Date();
+    };
+    $scope.today();
 
+
+    function startDateBeforeRender($dates) {
+        console.log($dates);
+        $dates.forEach(function  (date) {
+          if (date.localDateValue() < $scope.dt.getTime()) {
+            date.selectable = false;
+          }
+        });
+        if ($scope.add_end_time) {
+            var activeDate = moment($scope.add_end_time);
+            console.log(activeDate);
             $dates.filter(function(date) {
                 return date.localDateValue() >= activeDate.valueOf()
             }).forEach(function(date) {
@@ -46,8 +57,8 @@ angular.module('myApp.contacts', ['ngRoute','ui.bootstrap.datetimepicker','ui.da
     }
 
     function endDateBeforeRender($view, $dates) {
-        if ($scope.dateRangeStart) {
-            var activeDate = moment($scope.dateRangeStart).subtract(1, $view).add(1, 'minute');
+        if ($scope.add_start_time) {
+            var activeDate = moment($scope.add_start_time).subtract(1, $view).add(1, 'minute');
 
             $dates.filter(function(date) {
                 return date.localDateValue() <= activeDate.valueOf()
@@ -142,11 +153,9 @@ angular.module('myApp.contacts', ['ngRoute','ui.bootstrap.datetimepicker','ui.da
     $scope.logout = function() {
         firebase.auth().signOut().then(function() {
             console.log('Sign-out successful.')
+            $location.path('/');
         }, function(error) {
-            // An error happened.
+            console.log(error);
         });
     }
-
-
-
 }]);

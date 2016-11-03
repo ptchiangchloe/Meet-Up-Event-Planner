@@ -36,27 +36,22 @@
                       <option  ng-repeat="event in events" ng-selected="selected">{{event.$id}}</option>
                     </select>
                 </form>
-
                 <div class="control-group">
-                    <label class="control-label">First name:</label>
-
+                    <label for="guest-first-name"class="control-label">First name:</label>
                     <div class="controls">
-                        <input ng-model="guest_first_name" type="text">
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <label class="control-label">Last name:</label>
-
-                    <div class="controls">
-                        <input ng-model="guest_last_name" type="text">
+                        <input ng-model="guest_first_name" type="text" id="guest-first-name">
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Email:</label>
-
+                    <label for="guest-last-name" class="control-label">Last name:</label>
                     <div class="controls">
-                        <input ng-model="guest_email" type="text">
+                        <input id="guest-last-name" ng-model="guest_last_name" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="guest-email" class="control-label">Email:</label>
+                    <div class="controls">
+                        <input id="guest-email" ng-model="guest_email" type="text">
                     </div>
                 </div>
                 <div>
@@ -83,13 +78,10 @@
                             {{event.$id}}
                         </td>
                     </tr>
-
                 </tbody>
-
             </table>
             <div class=" ">
                 <a href="#!/contacts"><button  type="submit"class="btn btn-default gl-btn" ng-click="">Close</button></a>
-
             </div>
         </div>
 
