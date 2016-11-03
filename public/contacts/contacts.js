@@ -41,7 +41,7 @@ angular.module('myApp.contacts', ['ngRoute','ui.bootstrap.datetimepicker','ui.da
     function startDateBeforeRender($dates) {
         console.log($dates);
         $dates.forEach(function  (date) {
-          if (date < $scope.dt) {
+          if (date.localDateValue() < $scope.dt.getTime()) {
             date.selectable = false;
           }
         });
@@ -153,11 +153,9 @@ angular.module('myApp.contacts', ['ngRoute','ui.bootstrap.datetimepicker','ui.da
     $scope.logout = function() {
         firebase.auth().signOut().then(function() {
             console.log('Sign-out successful.')
+            $location.path('/');
         }, function(error) {
-            // An error happened.
+            console.log(error);
         });
     }
-
-
-
 }]);

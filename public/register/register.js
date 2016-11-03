@@ -11,18 +11,18 @@
         let vm = this;
         vm.createAccount = function() {
             let auth = firebase.auth();
-            let promise = auth.createUserWithEmailAndPassword(vm.email, vm.password);
-            promise
-            .then(function () {
-
+            auth.createUserWithEmailAndPassword(vm.email, vm.password)
+            .then(function (response) {
+              console.log("Success!", response);
+              $location.path('/contacts');
             })
             .catch(function(error) {
-                // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                // ...
+                console.log(errorCode);
+                console.log(errorMessage);
+                $location.path('/');
             });
-            $location.path('/contacts');
         };
     }
 

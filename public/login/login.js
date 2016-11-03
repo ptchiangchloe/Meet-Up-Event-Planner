@@ -18,28 +18,16 @@ function LoginController($location) {
     console.log("its working.")
 
     vm.loginVerify = function() {
-        let auth = firebase.auth();
-
-        new Promise(function(resolve, reject) {
-            firebase.auth().onAuthStateChanged(firebaseUser => {
-                if (firebaseUser) {
-                    console.log(firebaseUser);
-                    resolve();
-                } else {
-                    console.log('Not log in.');
-                    reject();
-                }
-            })
-        })
-        .catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorMessage);
-            $location.path('/');
-            // ...
+        new Promise(firebase.auth().signInWithEmailAndPassword(vm.email, vm.password))
+        .then(function(response) {
+          console.log("Success!", response); // the first I run this fn, firebase authenticate the visiter is a user but it didn't route to my contact page
+          $location.path('/contacts');// the second time I click, firebase authenticate the visiter is a user again and route the user to the landing page
+        }).catch(function(error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          $location.path('/');
         });
-
-        $location.path('/contacts');
     }
 }

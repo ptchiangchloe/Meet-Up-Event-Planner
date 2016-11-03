@@ -153,11 +153,9 @@ angular.module('myApp.contacts', ['ngRoute','ui.bootstrap.datetimepicker','ui.da
     $scope.logout = function() {
         firebase.auth().signOut().then(function() {
             console.log('Sign-out successful.')
+            $location.path('/');
         }, function(error) {
-            // An error happened.
+            console.log(error);
         });
     }
-
-
-
 }]);
