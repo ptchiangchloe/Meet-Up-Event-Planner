@@ -12,9 +12,13 @@
         vm.createAccount = function() {
             let auth = firebase.auth();
             auth.createUserWithEmailAndPassword(vm.email, vm.password)
-            .then(function (response) {
-              console.log("Success!", response);
-              $location.path('/contacts');
+            .then(function (firebaseUser) {
+              console.log("Success!", firebaseUser);
+              firebase.auth().onAuthStateChanged(function(firebaseUser) {
+                if (firebaseUser) {
+                  window.location = '/#!/contacts'
+                }
+              });
             })
             .catch(function(error) {
                 var errorCode = error.code;
